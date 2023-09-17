@@ -21,9 +21,10 @@ struct LoginView: View {
                 EntryField(entryText: $viewmodel.email, placeholder: "Email Adress", title: "Email")
                     .padding(.top, -50)
                     .padding([.leading, .trailing],16)
-                EntryField(entryText: $viewmodel.password, placeholder: "Password", title: "Password", image: .closeEye)
+                EntryField(entryText: $viewmodel.password, placeholder: "Password", title: "Password", image: .closeEye, isSecureField: true)
                     .padding(.top, 5)
                     .padding([.leading, .trailing],16)
+         
                         
 
                 
@@ -39,7 +40,7 @@ struct LoginView: View {
                 ButtonView(title: "Log in",
                            background: .blue)
                 {
-                   // viewmodel.login()
+                    viewmodel.login()
                     //Attemp log in
 
                 }

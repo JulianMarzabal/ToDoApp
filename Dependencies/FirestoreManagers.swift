@@ -20,7 +20,9 @@ class FirestoreManagers:ObservableObject {
     //self._items = FirestoreQuery(collectionPath: "users/\(userID)/todos")
     
     
-    private var userID = "s8ard2vPHhSRNbj1QD6MOqYIsqr1"
+    private var userID: String {
+        AuthorizationManager.shared.currentUserId
+    }
     
     func getFirestoreQuery() -> FirestoreQuery <[ItemModel]>{
       FirestoreQuery(collectionPath: "users/\(userID)/todos")

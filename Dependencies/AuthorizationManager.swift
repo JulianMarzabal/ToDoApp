@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 class AuthorizationManager:ObservableObject {
     
-    static let shared = AuthorizationManager(currentUserID: "s8ard2vPHhSRNbj1QD6MOqYIsqr1")
+    static let shared = AuthorizationManager(currentUserID: "")
     private lazy var db = FirestoreManagers.shared.db
     @Published var currentUserId:String
     var isMocked:Bool

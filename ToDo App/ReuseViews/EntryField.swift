@@ -28,9 +28,10 @@ enum Images {
 struct EntryField: View {
     
     @Binding  var entryText:String
-     @State var placeholder:String
+    @State var placeholder:String
     @State var title:String
     @State var image:Images = .null
+    @State var isSecureField: Bool = false
     
     var body: some View {
         
@@ -39,25 +40,51 @@ struct EntryField: View {
                 .padding(.top, 20)
                 .padding(.leading, 16)
             HStack {
-               
-                TextField(placeholder, text: $entryText)
-//                    .onChange(of: Just(entryText), perform: { newValue in
-//                        print(newValue)
-//                    })
-                    .onReceive(Just(entryText), perform: { newValue in
-                        print(newValue)
-                        
-                    })
-                    .padding([.leading,.trailing],20)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
+                if isSecureField {
+                    SecureField(placeholder, text: $entryText)
+                        .onReceive(Just(entryText), perform: { newValue in
+                            print(newValue)
+                            
+                            
+                        })
                     
-                if let image = image.eyeImage {
-                    Image(systemName: image)
+                        .padding([.leading,.trailing],20)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                    
+                    if let image = image.eyeImage {
+                        Image(systemName: image).onTapGesture {
+                            isSecureField.toggle()
+                            self.image = .openEye
+                        }
+                      
+                    }
+                } else {
+                    TextField(placeholder, text: $entryText)
+                    //                    .onChange(of: Just(entryText), perform: { newValue in
+                    //                        print(newValue)
+                    //                    })
+                    
+                        .onReceive(Just(entryText), perform: { newValue in
+                            print(newValue)
+                            
+                            
+                        })
+                    
+                        .padding([.leading,.trailing],20)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                    
+                    if let image = image.eyeImage {
+                        Image(systemName: image).onTapGesture {
+                            isSecureField.toggle()
+                            self.image = .closeEye
+                            
+                        }
                         //.frame(width: 40, height: 40)
-                        
-                }
+                    }
                     
+                }
                 
             }
             .padding([.top,.bottom], 20)
@@ -71,7 +98,7 @@ struct EntryField: View {
         
         
         
-            
+        
     }
 }
 
