@@ -10,16 +10,11 @@ import FirebaseFirestore
 
 class HomeViewModel: ObservableObject {
     @Published var showingNewItemView = false
-    //private let userID: String
-    
-//    init(userID:String) {
-//        self.userID = userID
-//    }
-    
+ 
     
     
     
     func delete(id:String) {
-        FirestoreManagers.shared.deleteDocument(id: id)
+        FirestoreManager.shared.deleteDocument(id: id)
     }
 }

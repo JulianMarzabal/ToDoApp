@@ -32,57 +32,59 @@ struct EntryField: View {
     @State var title:String
     @State var image:Images = .null
     @State var isSecureField: Bool = false
+    @ViewBuilder  var textInput: some View {
+        if isSecureField {
+            SecureField(placeholder, text: $entryText)
+        }else {
+            TextField(placeholder, text: $entryText)
+        }
+    }
     
     var body: some View {
         
         VStack(alignment: .leading) {
             Text(title)
-                .padding(.top, 20)
+                .padding(.top, 30)
                 .padding(.leading, 16)
             HStack {
-                if isSecureField {
-                    SecureField(placeholder, text: $entryText)
-                        .onReceive(Just(entryText), perform: { newValue in
-                            print(newValue)
-                            
-                            
-                        })
+                
+                textInput
                     
-                        .padding([.leading,.trailing],20)
-                        .textInputAutocapitalization(.never)
-                        .disableAutocorrection(true)
-                    
-                    if let image = image.eyeImage {
-                        Image(systemName: image).onTapGesture {
-                            isSecureField.toggle()
-                            self.image = .openEye
-                        }
-                      
+                    .onReceive(Just(entryText), perform: { newValue in
+                        print(newValue)
+                        
+                    })
+                    .padding([.leading,.trailing],20)
+                    .padding(.top, -20)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                
+                   
+//                } else {
+//                    TextField(placeholder, text: $entryText)
+//
+//                        .onReceive(Just(entryText), perform: { newValue in
+//                            print(newValue)
+//
+//
+//                        })
+//
+//                        .padding([.leading,.trailing],20)
+//                        .padding(.top, -20)
+//                        .textInputAutocapitalization(.never)
+//                        .disableAutocorrection(true)
+//
+//
+//
+//
+//                }
+                
+                if let image = image.eyeImage {
+                    Image(systemName: image).onTapGesture {
+                        isSecureField.toggle()
+                        self.image = isSecureField ? .closeEye : .openEye
                     }
-                } else {
-                    TextField(placeholder, text: $entryText)
-                    //                    .onChange(of: Just(entryText), perform: { newValue in
-                    //                        print(newValue)
-                    //                    })
-                    
-                        .onReceive(Just(entryText), perform: { newValue in
-                            print(newValue)
-                            
-                            
-                        })
-                    
-                        .padding([.leading,.trailing],20)
-                        .textInputAutocapitalization(.never)
-                        .disableAutocorrection(true)
-                    
-                    if let image = image.eyeImage {
-                        Image(systemName: image).onTapGesture {
-                            isSecureField.toggle()
-                            self.image = .closeEye
-                            
-                        }
-                        //.frame(width: 40, height: 40)
-                    }
+                    .padding(.top, -15)
                     
                 }
                 
@@ -92,7 +94,7 @@ struct EntryField: View {
             
         }
         .frame(maxHeight:35)
-        .padding([.leading,.trailing], 20)
+        .padding([.leading,.trailing], 25)
         .padding([.top,.bottom], 20)
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(.gray))
         

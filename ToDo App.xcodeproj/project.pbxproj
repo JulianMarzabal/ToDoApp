@@ -35,9 +35,8 @@
 		1E5C7F8B2A802E4A00BD0031 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5C7F8A2A802E4A00BD0031 /* MainView.swift */; };
 		1E5C7F8D2A802E4B00BD0031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E5C7F8C2A802E4B00BD0031 /* Assets.xcassets */; };
 		1E5C7F902A802E4B00BD0031 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E5C7F8F2A802E4B00BD0031 /* Preview Assets.xcassets */; };
-		1E5D191C2AAE7A1400B7DAD8 /* FirestoreManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5D191B2AAE7A1400B7DAD8 /* FirestoreManagers.swift */; };
+		1E5D191C2AAE7A1400B7DAD8 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5D191B2AAE7A1400B7DAD8 /* FirestoreManager.swift */; };
 		1E616DB82AA4D65300977DF3 /* ToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E616DB72AA4D65300977DF3 /* ToDoViewModel.swift */; };
-		1E65D8682AA7D6D300214D6C /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65D8672AA7D6D300214D6C /* FirestoreManager.swift */; };
 		1E6613DA2A9B8CDF008B000E /* ToDoListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6613D92A9B8CDF008B000E /* ToDoListItemView.swift */; };
 		1ED0BFD92A8591AE0034E588 /* EntryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED0BFD82A8591AE0034E588 /* EntryField.swift */; };
 		1EE6F12F2A9EA35200C48D7D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE6F12E2A9EA35200C48D7D /* API.swift */; };
@@ -71,9 +70,8 @@
 		1E5C7F8A2A802E4A00BD0031 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1E5C7F8C2A802E4B00BD0031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E5C7F8F2A802E4B00BD0031 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		1E5D191B2AAE7A1400B7DAD8 /* FirestoreManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManagers.swift; sourceTree = "<group>"; };
+		1E5D191B2AAE7A1400B7DAD8 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		1E616DB72AA4D65300977DF3 /* ToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewModel.swift; sourceTree = "<group>"; };
-		1E65D8672AA7D6D300214D6C /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		1E6613D92A9B8CDF008B000E /* ToDoListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemView.swift; sourceTree = "<group>"; };
 		1ED0BFD82A8591AE0034E588 /* EntryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryField.swift; sourceTree = "<group>"; };
 		1EE6F12E2A9EA35200C48D7D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -193,7 +191,9 @@
 				1EE6F12D2A9EA31800C48D7D /* Dependencies */,
 				1E1F9ED52A8989DC00EBD352 /* NewItem */,
 				1E5C7F872A802E4A00BD0031 /* ToDo App */,
+				1E86CEA22ABCF6FC00EE74EE /* ToDo AppTests */,
 				1E5C7F862A802E4A00BD0031 /* Products */,
+				1E86CEAA2ABCF7A100EE74EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,13 +242,26 @@
 			path = ToDoList;
 			sourceTree = "<group>";
 		};
+		1E86CEA22ABCF6FC00EE74EE /* ToDo AppTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "ToDo AppTests";
+			sourceTree = "<group>";
+		};
+		1E86CEAA2ABCF7A100EE74EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1EE6F12D2A9EA31800C48D7D /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
 				1EE6F12E2A9EA35200C48D7D /* API.swift */,
 				1EE6F1302A9EA36800C48D7D /* AuthorizationManager.swift */,
-				1E65D8672AA7D6D300214D6C /* FirestoreManager.swift */,
-				1E5D191B2AAE7A1400B7DAD8 /* FirestoreManagers.swift */,
+				1E5D191B2AAE7A1400B7DAD8 /* FirestoreManager.swift */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -347,10 +360,9 @@
 				1E0F6DE52A803A39009B1A84 /* HeaderView.swift in Sources */,
 				1E6613DA2A9B8CDF008B000E /* ToDoListItemView.swift in Sources */,
 				1E53961B2A956540005DF3FE /* ValidatorForm.swift in Sources */,
-				1E65D8682AA7D6D300214D6C /* FirestoreManager.swift in Sources */,
 				1E1F9ED02A897F3800EBD352 /* HomeView.swift in Sources */,
 				1E1F9EC52A89762400EBD352 /* Extension+Encodable.swift in Sources */,
-				1E5D191C2AAE7A1400B7DAD8 /* FirestoreManagers.swift in Sources */,
+				1E5D191C2AAE7A1400B7DAD8 /* FirestoreManager.swift in Sources */,
 				1E0F6DE92A805139009B1A84 /* ButtonView.swift in Sources */,
 				1E1F9EC32A8962AD00EBD352 /* RegisterViewModel.swift in Sources */,
 				1E616DB82AA4D65300977DF3 /* ToDoViewModel.swift in Sources */,

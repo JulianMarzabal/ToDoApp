@@ -31,8 +31,7 @@ class RegisterViewModel: ObservableObject {
             }
             
             self?.insertUserRecord(id: userID)
-            print("guardadoo")
-           // self?.coordinator?.toToDoApp()
+       
         }
     }
     

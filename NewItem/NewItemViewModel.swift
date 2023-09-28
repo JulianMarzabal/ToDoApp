@@ -41,16 +41,9 @@ class NewItemViewModel: ObservableObject {
                                 dueDate: date.timeIntervalSince1970,
                                 createdDate: Date().timeIntervalSince1970,
                                 isDone: false)
+
         
-//        // save model
-//        let db = Firestore.firestore()
-//        db.collection("users")
-//            .document(uID)
-//            .collection("todos")
-//            .document(newID)
-//            .setData(newItem.asDictionary())
-        
-        FirestoreManagers.shared.saveNewItem(uID: uID, newID: newID, data: newItem)
+        FirestoreManager.shared.saveNewItem(uID: uID, newID: newID, data: newItem)
         
         
         

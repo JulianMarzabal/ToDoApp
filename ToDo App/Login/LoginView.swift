@@ -40,7 +40,10 @@ struct LoginView: View {
                 ButtonView(title: "Log in",
                            background: .blue)
                 {
-                    viewmodel.login()
+                    Task {
+                        await viewmodel.login()
+                        
+                    }
                     //Attemp log in
 
                 }

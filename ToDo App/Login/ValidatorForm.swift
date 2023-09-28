@@ -48,9 +48,8 @@ struct ValidatePassword: Validator {
     }
     
     func validate(text:String) -> Bool {
-        let passwordRegex = "^(?=.*[A-Z])(?=.*\\d).{8,}$"
-        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-        return passwordPredicate.evaluate(with: text)
+
+        return !text.isEmpty
     }
 }
 struct ValidateName: Validator {
