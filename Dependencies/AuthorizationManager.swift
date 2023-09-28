@@ -12,8 +12,8 @@ import FirebaseFirestore
 
 class AuthorizationManager:ObservableObject {
     
-    static let shared = AuthorizationManager(currentUserID: "s8ard2vPHhSRNbj1QD6MOqYIsqr1")
-    private lazy var db = FirestoreManagers.shared.db
+    static let shared = AuthorizationManager(currentUserID: "")
+    private lazy var db = FirestoreManager.shared.db
     @Published var currentUserId:String
     var isMocked:Bool
     var isSignedInMocked:Bool
@@ -64,6 +64,26 @@ class AuthorizationManager:ObservableObject {
                 }
                 
             }
+    }
+//
+//    func loginUser(email:String, password:String)  {
+//        let auth = Auth.auth()
+//        auth.signIn(withEmail: email, password: password) { authDataResult, error in
+//
+//        }
+//
+//    }
+    
+    func loginUser(email: String, password: String) async throws {
+        let auth = Auth.auth()
+        
+        do {
+            let authDataResult = try await auth.signIn(withEmail: email, password: password)
+            currentUserId = authDataResult.user.uid
+        } catch {
+            print("error ")
+            throw error
+        }
     }
     
     

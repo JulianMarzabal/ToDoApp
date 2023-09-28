@@ -17,17 +17,21 @@ class ToDoListViewModel: ObservableObject {
         var newItem = item
         newItem.setDone(!item.isDone)
         
-        guard let uid = Auth.auth().currentUser?.uid else {
+        guard  AuthorizationManager.shared.currentUserId != "" else {
             return
         }
         
-        let db = Firestore.firestore()
-        db.collection("users")
-            .document(uid)
+       
+        FirestoreManager.shared.db
+            .collection("users")
+            .document(AuthorizationManager.shared.currentUserId)
             .collection("todos")
             .document(newItem.id)
             .setData(newItem.asDictionary())
+
+        
     }
+   
     
     
     

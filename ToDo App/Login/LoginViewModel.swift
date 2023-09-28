@@ -8,6 +8,7 @@
 import Foundation
 
 import FirebaseAuth
+import SwiftUI
 
 class LoginViewModel: ObservableObject {
     @Published var email = ""
@@ -19,29 +20,32 @@ class LoginViewModel: ObservableObject {
     
     init() {}
     
-    func login() {
+    func login() async {
         errorMesage = ""
-        guard !email.isEmpty, !password.isEmpty else {
-            errorMesage = "Please fill in  all fields"
+        
+        guard emailValidator.validate(text: email) else {
+            errorMesage = "Email incorrect"
             return
         }
+
         
-        loginUser()
-        
-        
-    }
-    private func loginUser() {
-        Auth.auth().signIn(withEmail: email, password: password) {authResult,error in
-            if let error = error {
-                self.errorMesage = "Cannot find this user"
-            } else {
-                print("To To do App")
-                
-                
-            }
+        guard passwordValidator.validate(text: password) else {
+            errorMesage = "Password incorrect"
+            return
         }
+            
+        
+        await loginUser()
+        
+        
     }
-    
-    
-    
+    private func loginUser() async {
+        do {
+            try await AuthorizationManager.shared.loginUser(email: email, password: password)
+            
+        } catch {
+            errorMesage = " Something went wrong, please try again"
+        }
+        
     }
+}

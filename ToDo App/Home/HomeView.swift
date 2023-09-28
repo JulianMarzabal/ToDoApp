@@ -11,18 +11,13 @@ import FirebaseFirestoreSwift
 struct HomeView: View {
     @StateObject var viewmodel: HomeViewModel
     init() {
-        self._items = FirestoreManagers.shared.getFirestoreQuery()
+        self._items = FirestoreManager.shared.getFirestoreQuery()
         self._viewmodel = StateObject(wrappedValue: HomeViewModel())
     }
 
     @FirestoreQuery var items: [ItemModel]
     
- 
-//    init(userID: String) {
-//        self._items = FirestoreQuery(collectionPath: "users/\(userID)/todos")
-//        self._viewmodel = StateObject(wrappedValue: HomeViewModel(userID: userID))
-//
-//    }
+
     
     var body: some View {
         NavigationView {
