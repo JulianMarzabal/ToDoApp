@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
-
+/// viewmodel
 class HomeViewModel: ObservableObject {
     @Published var showingNewItemView = false
  
